@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../header/Header";
 import { Outlet } from "react-router-dom";
 import Footer from "../footer/Footer";
 import ScrollToTop from "react-scroll-to-top";
 import { GrCart } from "react-icons/gr";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ClientSideLayout = () => {
+  useEffect(() => {
+    AOS.init({ duration: "1400" });
+  }, []);
   return (
     <div className="relative">
       <Header />
