@@ -10,7 +10,7 @@ import { FaThreads } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaTiktok } from "react-icons/fa";
 import { FaTelegram } from "react-icons/fa";
-import blackseed from "../assets/blackseed-oil.webp";
+import blackseed from "../assets/blackseed-oil-2.webp";
 import honey from "../assets/honey.webp";
 import { NavLink } from "react-router-dom";
 import { FaAngleDown } from "react-icons/fa";
@@ -110,7 +110,7 @@ const Footer = () => {
           <div className="md:block hidden">
             <h1 className="text-2xl font-bold text-white mb-6">RECENT POSTS</h1>
             <div className="flex gap-4">
-              <img src={blackseed} alt="Blackseed" />
+              <img src={blackseed} alt="Blackseed" className="w-20" />
               <div className="text-white">
                 <h2 className="font-semibold text-white cursor-pointer hover:text-[#dadada] hover:transition-all">
                   কালোজিরার ৩৭ স্বাস্থ্য উপকারিতা
@@ -120,7 +120,7 @@ const Footer = () => {
             </div>
             <div className="my-6 border-t-[1px] text-[#c5c5c5]" />
             <div className="flex gap-4">
-              <img src={honey} alt="Honey" />
+              <img src={honey} alt="Honey" className="w-20" />
               <div>
                 <h2 className="font-semibold text-white cursor-pointer hover:text-[#dadada] hover:transition-all">
                   মধু খাঁটি কি না কি ভাবে বুঝব ? সবার জানা উচিৎ
