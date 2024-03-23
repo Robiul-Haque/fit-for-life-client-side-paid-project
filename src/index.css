@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.thumb {
+    width: 8px;
+    height: 20px;
+    background-color: #13761d;
+    cursor: w-resize;
+    position: absolute;
+    top: -10px;
+    border-radius: 3px;
+}

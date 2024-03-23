@@ -13,7 +13,6 @@ import heart from "../assets/heart.png";
 import { GrCart } from "react-icons/gr";
 import { IoMenu } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
-import acharImg from "../assets/rosun-achar-2-removebg-preview.webp";
 
 const Header = () => {
   const [toogleMenuIcon, setToogleMenuIcon] = useState(true);
@@ -27,7 +26,7 @@ const Header = () => {
   };
 
   return (
-    <header>
+    <header className="border-b">
       <div className="md:flex justify-around py-3 font-semibold hidden bg-[#13761d] text-white">
         <small>
           Office Time : 08:00 AM - 12:00 AM | Hotline : +8809639426742
@@ -103,7 +102,10 @@ const Header = () => {
       {/* Mobile menu */}
       <nav className="flex justify-between items-center mx-4 my-2 md:hidden">
         {toogleMenuIcon && (
-          <i onClick={openToggleMenuIcon} className="flex justify-center items-center gap-x-2 text-2xl">
+          <i
+            onClick={openToggleMenuIcon}
+            className="flex justify-center items-center gap-x-2 text-2xl"
+          >
             <IoMenu />
             <h2 className="text-sm font-bold">Menu</h2>
           </i>
@@ -147,42 +149,6 @@ const Header = () => {
           </ul>
         </div>
       )}
-      {/* Header hero section */}
-      <section className="bg-[url('./assets/blur-bg.jpg')] bg-cover bg-top md:h-[632px] h-full w-full pb-20">
-        <div className="md:flex justify-evenly md:items-center pt-10">
-          <div>
-            <h1
-              className="text-[#333333] md:text-5xl md:font-extrabold md:leading-normal leading-normal md:w-[420px] md:ml-0 text-4xl ml-4 font-bold"
-              data-aos="fade-right"
-            >
-              Garlic Pickle দেশি রসুনের আঁচার
-            </h1>
-            <p
-              className="text-[#333333] md:font-semibold md:text-lg my-6 md:w-[560px] md:ml-0 leading-relaxed font-normal ml-4"
-              data-aos="fade-right"
-            >
-              বিভিন্ন রকমের আচারের মধ্যে রসুনের আচার অন্যতম। রসুন আমাদের শরীরে
-              প্রাকৃতিক এন্টিবায়োটিক হিসেবে কাজ করে। রসুনের আচার শুধু স্বাদের
-              জন্য নয়, স্বাস্থের জন্যেও বেশ উপকারি। খিচুড়ি কিংবা নিয়মিত খাবারের
-              সঙ্গে আচার দারুন টেস্ট কম্বিনেশন , এটা স্বাদ দ্বিগুণ করে ।
-            </p>
-            <button
-              className="bg-[#13761d] text-slate-200 font-semibold text-lg px-8 py-4 rounded-sm border-2 border-green-700 hover:bg-transparent hover:text-[#333333] duration-500 md:ml-0 ml-4"
-              data-aos="fade-up"
-            >
-              Read More
-            </button>
-          </div>
-          <div className="md:ml-[-250px]">
-            <img
-              src={acharImg}
-              alt="Rosun achar img"
-              data-aos="zoom-in"
-              className="md:w-full md:mt-0 w-80 mx-auto mt-6"
-            />
-          </div>
-        </div>
-      </section>
     </header>
   );
 };
