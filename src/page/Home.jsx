@@ -39,10 +39,11 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 import { IoLogoLinkedin } from "react-icons/io";
 import { FaArrowRightLong } from "react-icons/fa6";
 import acharImg from "../assets/rosun-achar-2-removebg-preview.webp";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <>
+    <div className="md:pt-[105px] pt-[56px]">
       <section className="bg-[url('./assets/blur-bg.jpg')] bg-cover bg-top md:h-[632px] h-full w-full pb-20">
         <div className="md:flex justify-evenly md:items-center pt-10">
           <div>
@@ -78,14 +79,14 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="md:w-3/4 mx-auto my-28 md:px-20">
+      <section className="md:w-[88%] mx-auto my-28 md:px-20">
         <h2 className="text-2xl font-semibold text-[#333333] md:mx-1 mx-3">
           ALL PRODUCTS
         </h2>
         <div className="mt-2 mb-9 bg-slate-200 md:mx-1 mx-3">
           <p className="w-44 border border-[#13761d]"></p>
         </div>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={badam}
@@ -97,7 +98,7 @@ const Home = () => {
             </p>
             <div className="md:m-5 mx-1 my-5 text-center">
               <h1 className="text-lg font-semibold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                100% ঘিয়ে ভাজা চিনা বাদাম
+                <Link to={"/product"}>100% ঘিয়ে ভাজা চিনা বাদাম</Link>
               </h1>
               <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
                 বাদাম / Nut
@@ -184,7 +185,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={amsotto}
@@ -280,7 +281,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={Chiaseed_photo}
@@ -376,7 +377,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={rosun_achar}
@@ -472,7 +473,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={patali_gur}
@@ -565,7 +566,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={holudur_gura}
@@ -661,7 +662,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={Masturd_oil_1}
@@ -759,7 +760,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-4 my-9">
+        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={satu}
@@ -1153,7 +1154,7 @@ const Home = () => {
           ></iframe>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

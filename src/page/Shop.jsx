@@ -40,8 +40,8 @@ const Shop = () => {
   };
 
   return (
-    <section className="flex md:justify-center gap-x-4 md:w-3/4 md:mx-auto mx-2 md:mt-12 md:mb-28 mb-14 md:px-20">
-      <div className="md:block w-[25%] hidden">
+    <section className="flex md:justify-center gap-x-12 md:w-3/4 md:mx-auto mx-1 md:mt-36 md:mb-16 mb-14">
+      <div className="md:block w-[30%] hidden">
         <h2 className="text-2xl font-semibold text-[#333333]">
           FILTER BY PRICE
         </h2>
@@ -50,7 +50,7 @@ const Shop = () => {
           value={values}
           min={MIN}
           max={MAX}
-          className="w-72 h-0.5 bg-[#13761d] cursor-pointer relative my-8"
+          className="md h-0.5 bg-[#13761d] cursor-pointer relative my-8"
         />
         <div className="flex justify-between gap-3 items-center">
           <div>
@@ -217,7 +217,7 @@ const Shop = () => {
           </div>
         </div>
       </div>
-      <div className="md:w-[75%] w-full">
+      <div className="md:w-[70%] w-full">
         <div className="md:hidden block">
           <div className="flex justify-between items-center mt-4">
             <p className="cursor-pointer">
@@ -237,7 +237,7 @@ const Shop = () => {
               <p className="font-bold">Show sidebar</p>
             </span>
             {toogleSideMenu ? (
-              <div className="block absolute -top-3 left-0 z-30 w-4/5 h-[100%] bg-slate-100 md:hidden">
+              <div className="block absolute top-16 left-0 z-30 w-4/5 h-[100%] bg-slate-100 md:hidden">
                 <div className="flex justify-between items-center cursor-pointer mt-4 mx-4">
                   <h2 className="font-semibold text-xl text-[#333333]">
                     SIDEBAR

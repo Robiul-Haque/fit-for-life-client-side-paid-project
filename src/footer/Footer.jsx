@@ -48,7 +48,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#373839]">
-      <div className="md:px-80 pt-10 px-6">
+      <div className="lg:px-60 md:px-40 pt-10 px-6">
         <div className="md:flex md:gap-x-20 md:items-start md:flex-row flex-col">
           <div>
             <img src={siteLogo} alt="Site Logo" className="h-20 mb-5" />
@@ -110,7 +110,7 @@ const Footer = () => {
           <div className="md:block hidden">
             <h1 className="text-2xl font-bold text-white mb-6">RECENT POSTS</h1>
             <div className="flex gap-4">
-              <img src={blackseed} alt="Blackseed" className="w-20" />
+              <img src={blackseed} alt="Blackseed" className="w-20 h-20" />
               <div className="text-white">
                 <h2 className="font-semibold text-white cursor-pointer hover:text-[#dadada] hover:transition-all">
                   কালোজিরার ৩৭ স্বাস্থ্য উপকারিতা
@@ -120,7 +120,7 @@ const Footer = () => {
             </div>
             <div className="my-6 border-t-[1px] text-[#c5c5c5]" />
             <div className="flex gap-4">
-              <img src={honey} alt="Honey" className="w-20" />
+              <img src={honey} alt="Honey" className="w-20 h-20" />
               <div>
                 <h2 className="font-semibold text-white cursor-pointer hover:text-[#dadada] hover:transition-all">
                   মধু খাঁটি কি না কি ভাবে বুঝব ? সবার জানা উচিৎ
@@ -305,7 +305,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-[#c5c5c5] py-6 border-t-[1px] border-[#555657] md:px-80 mt-10 px-6 md:text-start text-center md:mb-0 mb-14">
+      <p className="text-[#c5c5c5] py-6 border-t-[1px] border-[#555657] lg:px-60 md:px-40 mt-10 px-6 md:text-start text-center md:mb-0 mb-14">
         Fit for Life © All Rights Reserved | Made with
         <span className="text-[#ff0000] text-xl">♥</span> Codeyeo
       </p>
