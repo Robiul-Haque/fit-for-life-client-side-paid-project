@@ -16,6 +16,7 @@ import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const [toogleMenuIcon, setToogleMenuIcon] = useState(true);
+  const [toogleMenuTab, setToogleMenuTab] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
 
   const openToggleMenuIcon = () => {
@@ -28,8 +29,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="border-b fixed top-0 w-full bg-white z-40">
-        <div className="md:flex justify-center md:gap-x-[820px] py-2 font-semibold hidden bg-[#13761d] text-white">
+      <header className="border-b fixed top-0 w-screen bg-white z-40">
+        <div className="md:flex justify-evenly xl:gap-x-96 py-2.5 font-semibold hidden bg-[#13761d] text-white">
           <small>
             Office Time : 08:00 AM - 12:00 AM | Hotline : +8809639426742
           </small>
@@ -58,7 +59,7 @@ const Header = () => {
           </div>
         </div>
         {/* Desktop menu */}
-        <nav className="md:flex justify-evenly items-center my-1 mx-32 hidden">
+        <nav className="xl:flex justify-evenly items-center my-1 mx-32 md:mx-0 hidden sm:hidden md:hidden">
           <img src={siteLogo} alt="Site logo" className="w-56 h-16" />
           <ul className="flex gap-x-6">
             <li className="font-semibold hover:text-[#13761d] transition-all">
@@ -78,7 +79,7 @@ const Header = () => {
             </li>
           </ul>
           <div className="flex gap-x-6 items-center">
-            <div className="relative">
+            <div className="md:hidden lg:hidden xl:block 2xl:block relative">
               <input
                 type="search"
                 name="search"
@@ -109,6 +110,61 @@ const Header = () => {
             </div>
           </div>
         </nav>
+        {/* Tab menu */}
+        <nav className="sm:flex justify-evenly items-center xl:hidden hidden py-2.5 mx-32 md:mx-0">
+          <i onClick={() => setToogleMenuTab(true)}>
+            <IoMenu className="font-bold text-4xl" />
+          </i>
+          <img src={siteLogo} alt="Site logo" className="w-40 h-14" />
+          <i className="font-semibold text-3xl relative">
+            <GrCart />
+            <small className="rounded-full w-6 h-6 bg-[#13761d] p-0.5 text-xs text-center text-white absolute -top-3 -right-3">
+              0
+            </small>
+          </i>
+        </nav>
+        {toogleMenuTab && (
+          <div className="hidden sm:block xl:hidden fixed top-0 left-0 w-2/4 h-full bg-white z-40">
+            <div className="flex justify-between items-center p-4 bg-slate-100">
+              <h1 className="font-semibold text-3xl">MENU</h1>
+              <i onClick={() => setToogleMenuTab(false)}>
+                <IoClose className="font-bold text-3xl" />
+              </i>
+            </div>
+            <div className="flex justify-center gap-x-5 my-6 mx-4">
+              <input
+                type="search"
+                name="search"
+                placeholder="Search for Product"
+                required
+                className="w-80 h-14 p-1.5 rounded border border-[#13761d] focus:outline-none"
+              />
+              <button className="bg-[#13761d] p-4 rounded">
+                <IoSearch className="text-white text-xl" />
+              </button>
+            </div>
+            <ul>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink to={"/"}>Home</NavLink>
+              </li>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink to={"/shop"}>Shop</NavLink>
+              </li>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink to={"/about-us"}>About us</NavLink>
+              </li>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink to={"/blog"}>Blog</NavLink>
+              </li>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink to={"/contact-us"}>Contact us</NavLink>
+              </li>
+              <li className="font-semibold text-xl p-4 border">
+                <NavLink className="font-semibold">Login / Register</NavLink>
+              </li>
+            </ul>
+          </div>
+        )}
         {/* Mobile menu */}
         <nav className="flex justify-between items-center mx-4 my-2 md:hidden">
           {toogleMenuIcon && (

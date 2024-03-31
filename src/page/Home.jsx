@@ -44,8 +44,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="md:pt-[105px] pt-[56px]">
-      <section className="bg-[url('./assets/blur-bg.jpg')] bg-cover bg-top md:h-[632px] h-full w-full pb-20">
-        <div className="md:flex justify-evenly md:items-center pt-10">
+      <section className="bg-[url('./assets/blur-bg.jpg')] bg-cover bg-top sm:max-lg:h-[820px] h-full w-full pb-20">
+        <div className="md:flex justify-evenly md:items-center sm:max-lg:flex-col pt-10">
           <div>
             <h1
               className="text-[#333333] md:text-5xl md:font-extrabold md:leading-normal leading-normal md:w-[420px] md:ml-0 text-4xl ml-4 font-bold"
@@ -54,7 +54,7 @@ const Home = () => {
               Garlic Pickle দেশি রসুনের আঁচার
             </h1>
             <p
-              className="text-[#333333] md:font-semibold md:text-lg my-6 md:w-[560px] md:ml-0 leading-relaxed font-normal ml-4"
+              className="text-[#333333] md:font-semibold md:text-lg my-6 sm:w-[560px] md:ml-0 leading-relaxed font-normal ml-4"
               data-aos="fade-right"
             >
               বিভিন্ন রকমের আচারের মধ্যে রসুনের আচার অন্যতম। রসুন আমাদের শরীরে
@@ -73,20 +73,21 @@ const Home = () => {
             <img
               src={acharImg}
               alt="Rosun achar img"
-              data-aos="zoom-in"
-              className="md:w-full md:mt-0 w-80 mx-auto mt-6"
+              
+              className="sm:max-lg:w-4/6 w-full mx-auto mt-6"
             />
           </div>
+          {/* data-aos="zoom-in" */}
         </div>
       </section>
-      <section className="md:w-[88%] mx-auto my-28 md:px-20">
+      <section className="lg:w-[95%] xl:w-[81%] mx-auto my-28 md:px-5">
         <h2 className="text-2xl font-semibold text-[#333333] md:mx-1 mx-3">
           ALL PRODUCTS
         </h2>
         <div className="mt-2 mb-9 bg-slate-200 md:mx-1 mx-3">
           <p className="w-44 border border-[#13761d]"></p>
         </div>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={badam}
@@ -185,7 +186,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={amsotto}
@@ -281,7 +282,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={Chiaseed_photo}
@@ -377,7 +378,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={rosun_achar}
@@ -473,7 +474,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={patali_gur}
@@ -566,7 +567,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={holudur_gura}
@@ -662,7 +663,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={Masturd_oil_1}
@@ -760,7 +761,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="flex md:justify-between md:flex-row md:gap-x-0 justify-center flex-wrap gap-8 my-9">
+        <section className="flex xl:justify-evenly xl:flex-row xl:gap-0 justify-center flex-wrap gap-8 my-9">
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={satu}
@@ -867,7 +868,7 @@ const Home = () => {
         <div className="mt-2 mb-9 bg-slate-200 md:mx-1 mx-3">
           <p className="w-14 border border-[#13761d]"></p>
         </div>
-        <div className="flex md:justify-between items-center md:flex-row flex-col gap-8">
+        <div className="flex xl:justify-evenly items-center xl:flex-row flex-col gap-8">
           <div className="md:w-96 w-80 rounded border hover:shadow-lg duration-300">
             <div className="relative">
               <img

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ReactImageMagnify from "react-image-magnify";
 import achar_combo from "../assets/achar-combo.webp";
+import alu_bukhara from "../assets/Alu-bukhara.webp";
+import badam from "../assets/Badam.jpg";
 import { FiPlus } from "react-icons/fi";
 import { IoRemoveOutline } from "react-icons/io5";
 import { IoIosGitCompare } from "react-icons/io";
@@ -12,6 +14,7 @@ import delivery_1 from "../assets/Delivery-1.jpg";
 import delivery_2 from "../assets/Delivery-2.jpg";
 
 const Product = () => {
+  const [cartCount, setCartCount] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggleDescriptionTab = () => {
@@ -74,13 +77,19 @@ const Product = () => {
           </p>
           <div className="flex md:gap-x-12 gap-y-6 items-center md:flex-row flex-col my-5">
             <div className="flex justify-start items-cente">
-              <span className="border text-center pe-2 pb-2 ps-2 pt-3 h-11 w-9 cursor-pointer hover:bg-[#13761d] hover:text-white duration-300 rounded">
+              <span
+                onClick={() => setCartCount(cartCount - 1)}
+                className="border text-center pe-2 pb-2 ps-2 pt-3 h-11 w-9 cursor-pointer hover:bg-[#13761d] hover:text-white duration-300 rounded"
+              >
                 <IoRemoveOutline />
               </span>
               <span className="border text-center p-2 font-bold h-11 w-11 rounded">
-                0
+                {cartCount}
               </span>
-              <span className="border text-center pe-2 pb-2 ps-2 pt-3 h-11 w-9 cursor-pointer hover:bg-[#13761d] hover:text-white duration-300 rounded">
+              <span
+                onClick={() => setCartCount(cartCount + 1)}
+                className="border text-center pe-2 pb-2 ps-2 pt-3 h-11 w-9 cursor-pointer hover:bg-[#13761d] hover:text-white duration-300 rounded"
+              >
                 <FiPlus />
               </span>
             </div>
@@ -138,12 +147,7 @@ const Product = () => {
           className="w-28 rounded-sm cursor-pointer"
         />
         <img
-          src={achar_combo}
-          alt=""
-          className="w-28 rounded-sm cursor-pointer"
-        />
-        <img
-          src={achar_combo}
+          src={alu_bukhara}
           alt=""
           className="w-28 rounded-sm cursor-pointer"
         />

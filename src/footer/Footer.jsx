@@ -49,7 +49,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#373839]">
       <div className="lg:px-60 md:px-40 pt-10 px-6">
-        <div className="md:flex md:gap-x-20 md:items-start md:flex-row flex-col">
+        <div className="flex justify-center sm:gap-x-20 sm:gap-y-10 items-start xl:flex-row flex-col">
           <div>
             <img src={siteLogo} alt="Site Logo" className="h-20 mb-5" />
             <div className="flex items-center gap-x-2 text-[#c5c5c5]">
@@ -107,7 +107,7 @@ const Footer = () => {
             </div>
           </div>
           {/* Desktop Footer Menu */}
-          <div className="md:block hidden">
+          <div className="xl:block hidden">
             <h1 className="text-2xl font-bold text-white mb-6">RECENT POSTS</h1>
             <div className="flex gap-4">
               <img src={blackseed} alt="Blackseed" className="w-20 h-20" />
@@ -129,7 +129,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-          <div className="md:block hidden">
+          <div className="xl:block hidden">
             <h1 className="text-2xl font-bold text-white mb-6">USEFUL LINKS</h1>
             <ul>
               <li className="text-[#c5c5c5] font-semibold hover:text-white">
@@ -149,7 +149,7 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div className="md:block hidden">
+          <div className="xl:block hidden">
             <h1 className="text-2xl font-bold text-white mb-6">CATEGORIES</h1>
             <ul>
               <li className="text-[#c5c5c5] font-semibold hover:text-white">
@@ -176,22 +176,28 @@ const Footer = () => {
             </ul>
           </div>
           {/* Mobile Footer Menu */}
-          <div className="md:hidden md:mt-0 block mt-10">
-            <div className="flex justify-between items-center">
-              <h1 className="text-xl font-bold text-white">RECENT POSTS</h1>
-              {!resentPost ? (
-                <i onClick={resentPostOpen} className="text-[#dadada] mr-1">
+          <div className="xl:hidden block w-full">
+            {!resentPost ? (
+              <div
+                onClick={resentPostOpen}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">RECENT POSTS</h1>
+                <i className="text-[#dadada] mr-1">
                   <FaAngleDown />
                 </i>
-              ) : (
-                <i
-                  onClick={resentPostClose}
-                  className="bg-[#dadada] text-[#373839] rounded-full p-1"
-                >
+              </div>
+            ) : (
+              <div
+                onClick={resentPostClose}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">RECENT POSTS</h1>
+                <i className="bg-[#dadada] text-[#373839] rounded-full p-1">
                   <FaAngleUp />
                 </i>
-              )}
-            </div>
+              </div>
+            )}
             {resentPost && (
               <>
                 <div className="flex gap-4 border-b-[1px] border-[#555657] pb-4 mb-4 mt-6">
@@ -221,22 +227,28 @@ const Footer = () => {
               </>
             )}
           </div>
-          <div className="md:hidden md:mt-0 block mt-10">
-            <div className="flex justify-between items-center">
-              <h1 className="text-xl font-bold text-white">USEFUL LINKS</h1>
-              {!usefullLinks ? (
-                <i onClick={usefulLinksOpen} className="text-[#dadada] mr-1">
+          <div className="xl:hidden block w-full">
+            {!usefullLinks ? (
+              <div
+                onClick={usefulLinksOpen}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">USEFUL LINKS</h1>
+                <i className="text-[#dadada] mr-1">
                   <FaAngleDown />
                 </i>
-              ) : (
-                <i
-                  onClick={usefulLinksClose}
-                  className="bg-[#dadada] text-[#373839] rounded-full p-1"
-                >
+              </div>
+            ) : (
+              <div
+                onClick={usefulLinksClose}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">USEFUL LINKS</h1>
+                <i className="bg-[#dadada] text-[#373839] rounded-full p-1">
                   <FaAngleUp />
                 </i>
-              )}
-            </div>
+              </div>
+            )}
             {usefullLinks && (
               <>
                 <ul>
@@ -259,22 +271,28 @@ const Footer = () => {
               </>
             )}
           </div>
-          <div className="md:hidden md:mt-0 block mt-10">
-            <div className="flex justify-between items-center">
-              <h1 className="text-xl font-bold text-white">CATEGORIES</h1>
-              {!categories ? (
-                <i onClick={categoriesOpen} className="text-[#dadada] mr-1">
+          <div className="xl:hidden block w-full">
+            {!categories ? (
+              <div
+                onClick={categoriesOpen}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">CATEGORIES</h1>
+                <i className="text-[#dadada] mr-1">
                   <FaAngleDown />
                 </i>
-              ) : (
-                <i
-                  onClick={categoriesClose}
-                  className="bg-[#dadada] text-[#373839] rounded-full p-1"
-                >
+              </div>
+            ) : (
+              <div
+                onClick={categoriesClose}
+                className="flex justify-between items-center"
+              >
+                <h1 className="text-xl font-bold text-white">CATEGORIES</h1>
+                <i className="bg-[#dadada] text-[#373839] rounded-full p-1">
                   <FaAngleUp />
                 </i>
-              )}
-            </div>
+              </div>
+            )}
             {categories && (
               <>
                 <ul>
@@ -311,9 +329,11 @@ const Footer = () => {
       </p>
       <div className="md:hidden flex justify-around bg-white py-2 fixed bottom-0 left-0 w-full">
         <div className="flex flex-col items-center">
-          <i className="text-2xl font-extrabold text-[#373839]">
-            <AiOutlineShop />
-          </i>
+          <NavLink to={"/shop"}>
+            <i className="text-2xl font-extrabold text-[#373839]">
+              <AiOutlineShop />
+            </i>
+          </NavLink>
           <p className="text-[#373839] text-sm font-semibold">Shop</p>
         </div>
         <div className="flex flex-col items-center relative">

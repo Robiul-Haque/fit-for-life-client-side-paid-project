@@ -21,7 +21,7 @@ const Shop = () => {
   const MAX = 8400;
   const [values, setValues] = useState([MIN, MAX]);
   const [toogleItem, setToogleItem] = useState(false);
-  const [toogleSideMenu, setToogleSideMenu] = useState(true);
+  const [toogleSideMenu, setToogleSideMenu] = useState(false);
 
   const handleOpenItem = () => {
     setToogleItem(true);
@@ -40,7 +40,7 @@ const Shop = () => {
   };
 
   return (
-    <section className="flex md:justify-center gap-x-12 md:w-3/4 md:mx-auto mx-1 md:mt-36 md:mb-16 mb-14">
+    <section className="flex md:justify-center gap-x-12 md:w-3/4 md:mx-auto mx-1 md:mt-36 mt-16 md:mb-16 mb-14">
       <div className="md:block w-[30%] hidden">
         <h2 className="text-2xl font-semibold text-[#333333]">
           FILTER BY PRICE
@@ -219,7 +219,10 @@ const Shop = () => {
       </div>
       <div className="md:w-[70%] w-full">
         <div className="md:hidden block">
-          <div className="flex justify-between items-center mt-4">
+          <div
+            onClick={handleCloseSideMenu}
+            className="flex justify-between items-center mt-4"
+          >
             <p className="cursor-pointer">
               Home / <span className="text-[#333333] font-bold">Shop</span>
             </p>
@@ -237,7 +240,7 @@ const Shop = () => {
               <p className="font-bold">Show sidebar</p>
             </span>
             {toogleSideMenu ? (
-              <div className="block absolute top-16 left-0 z-30 w-4/5 h-[100%] bg-slate-100 md:hidden">
+              <div className="block absolute -top-2 left-0 z-30 w-4/5 h-[100%] bg-slate-100 md:hidden">
                 <div className="flex justify-between items-center cursor-pointer mt-4 mx-4">
                   <h2 className="font-semibold text-xl text-[#333333]">
                     SIDEBAR
@@ -447,6 +450,7 @@ const Shop = () => {
               <></>
             )}
             <select
+              onClick={handleCloseSideMenu}
               name="sorting"
               className="border-b-2 focus:border-b-green-700 focus:outline-none cursor-pointer font-semibold text-[#333333] w-32 position-fixed bottom-0"
             >
@@ -465,7 +469,10 @@ const Shop = () => {
             </select>
           </div>
         </div>
-        <div className="md:flex justify-between text-[#555555] hidden">
+        <div
+          onClick={handleCloseSideMenu}
+          className="md:flex justify-between text-[#555555] hidden"
+        >
           <p className="cursor-pointer">
             Home / <span className="text-[#333333] font-bold">Shop</span>
           </p>
@@ -503,7 +510,10 @@ const Shop = () => {
           </select>
         </div>
         {/* all products */}
-        <div className="grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-6 mt-8">
+        <div
+          onClick={handleCloseSideMenu}
+          className="grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-6 mt-8"
+        >
           <div className="md:w-72 w-40 border rounded relative overflow-hidden">
             <img
               src={badam}
