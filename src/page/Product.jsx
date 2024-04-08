@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import ReactImageMagnify from "react-image-magnify";
-import achar_combo from "../assets/achar-combo.webp";
-import alu_bukhara from "../assets/Alu-bukhara.webp";
-import badam from "../assets/Badam.jpg";
 import { FiPlus } from "react-icons/fi";
 import { IoRemoveOutline } from "react-icons/io5";
 import { IoIosGitCompare } from "react-icons/io";
@@ -12,10 +9,38 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaLinkedinIn } from "react-icons/fa";
 import delivery_1 from "../assets/Delivery-1.jpg";
 import delivery_2 from "../assets/Delivery-2.jpg";
+import { Link, useLoaderData } from "react-router-dom";
+import { FeaturesProducts } from "../component/FeaturesProducts";
 
 const Product = () => {
-  const [cartCount, setCartCount] = useState(0);
+  const {
+    productName,
+    productCategory,
+    productCurrentPrice,
+    productPreviousPrice,
+    productDiscount,
+    productAvailable,
+    productTages,
+    weight,
+    singleProductImages,
+  } = useLoaderData();
+  const [cartCount, setCartCount] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
+  const [imgIndex, setImgIndex] = useState([]);
+
+  const handleAddToCart = (name, currentPrice, discount, available) => {
+    const getProduct = JSON.parse(localStorage.getItem("fit-for-life") || "[]");
+    const setProduct = {
+      name,
+      currentPrice,
+      discount,
+      available,
+      cartCount,
+    };
+    getProduct.push(setProduct);
+    localStorage.setItem("fit-for-life", JSON.stringify(getProduct));
+    console.log(getProduct);
+  };
 
   const handleToggleDescriptionTab = () => {
     setIsOpen(true);
@@ -26,56 +51,98 @@ const Product = () => {
   };
 
   return (
-    <div className="md:w-2/3 mx-auto xl:mt-28 mb-20">
+    <div className="md:w-[94%] xl:w-2/3 mx-auto xl:mt-28 mb-20">
       <div className="flex justify-between items-center md:flex-row flex-col mt-14">
         <p className="cursor-pointer my-6">
-          Home / বাদাম /{" "}
-          <span className="text-[#333333] font-bold">
-            100% ঘিয়ে ভাজা চিনা বাদাম
-          </span>
+          {productName}
+          <span className="text-[#333333] font-bold">{productCategory}</span>
         </p>
-        <span className="font-semibold">Back</span>
+        <Link to={"/shop"}>
+          <span className="font-semibold">Back</span>
+        </Link>
       </div>
-      <div className="flex justify-start gap-x-10 items-start md:flex-row flex-col">
+      <div className="flex justify-star md:gap-x-5 xl:gap-x-10 items-start md:flex-row flex-col">
         <div className="md:w-[500px] md:h-[500px] md:m-0 m-6">
-          <ReactImageMagnify
-            {...{
-              smallImage: {
-                alt: "Wristwatch by Ted Baker London",
-                isFluidWidth: true,
-                src: achar_combo,
-              },
-              largeImage: {
-                src: achar_combo,
-                width: 1200,
-                height: 800,
-              },
-              enlargedImagePosition: "hover",
-              lensStyle: {
-                backgroundColor: "rgba(0, 0, 0, 0.5)",
-              },
-              isHintEnabled: true,
-            }}
-          />
+          {imgIndex == 0 ? (
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: singleProductImages[0],
+                },
+                largeImage: {
+                  src: singleProductImages[0],
+                  width: 1200,
+                  height: 800,
+                },
+                enlargedImagePosition: "hover",
+                lensStyle: {
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                },
+                isHintEnabled: true,
+              }}
+            />
+          ) : imgIndex == 1 ? (
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: singleProductImages[1],
+                },
+                largeImage: {
+                  src: singleProductImages[1],
+                  width: 1200,
+                  height: 800,
+                },
+                enlargedImagePosition: "hover",
+                lensStyle: {
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                },
+                isHintEnabled: true,
+              }}
+            />
+          ) : imgIndex == 2 ? (
+            <ReactImageMagnify
+              {...{
+                smallImage: {
+                  alt: "Wristwatch by Ted Baker London",
+                  isFluidWidth: true,
+                  src: singleProductImages[2],
+                },
+                largeImage: {
+                  src: singleProductImages[2],
+                  width: 1200,
+                  height: 800,
+                },
+                enlargedImagePosition: "hover",
+                lensStyle: {
+                  backgroundColor: "rgba(0, 0, 0, 0.5)",
+                },
+                isHintEnabled: true,
+              }}
+            />
+          ) : (
+            ""
+          )}
         </div>
         <div className="md:ml-0 ml-5">
-          <h2 className="font-bold text-lg">100% ঘিয়ে ভাজা চিনা বাদাম</h2>
-          <h1 className="font-bold text-2xl text-[#13761d] my-5">
-            300.00<span className="text-2xl font-extrabold">৳</span> – 600.00
-            <span className="text-2xl font-extrabold">৳</span>
+          <h2 className="font-bold text-xl">{productName}</h2>
+          <h1 className="font-extrabold text-xl text-[#13761d] my-5">
+            {productCurrentPrice}
           </h1>
           <p className="font-semibold">
             ☎️Hotline: <span className="text-[#13761d]">09639-426742</span>
           </p>
-          <p className="font-semibold my-5">ওজন / Weight: 1kg, 500 gm</p>
-          <p className="text-[#13761d] font-semibold">
+          <p className="font-semibold my-5">ওজন / Weight: {weight}</p>
+          <p className="text-[#13761d] font-extrabold text-md">
             <del className="text-[#bbbbbb] mr-3">
-              700.00<span className="font-extrabold text-md">৳</span>
+              {productPreviousPrice !== "no" && productPreviousPrice}
             </del>
-            600.00
-            <span className="font-extrabold text-md">৳</span>
+            {productCurrentPrice}
           </p>
-          <div className="flex md:gap-x-12 gap-y-6 items-center md:flex-row flex-col my-5">
+          <div className="flex xl:gap-x-12 gap-y-6 xl:items-center items-start xl:flex-row flex-col my-5">
             <div className="flex justify-start items-cente">
               <span
                 onClick={() => setCartCount(cartCount - 1)}
@@ -94,7 +161,17 @@ const Product = () => {
               </span>
             </div>
             <div>
-              <button className="bg-[#13761d] hover:bg-[#245e26] duration-300 text-white font-semibold py-3 px-4 rounded mr-6">
+              <button
+                onClick={() =>
+                  handleAddToCart(
+                    productName,
+                    productCurrentPrice,
+                    productDiscount,
+                    productAvailable
+                  )
+                }
+                className="bg-[#13761d] hover:bg-[#245e26] duration-300 text-white font-semibold py-3 px-4 rounded me-6 md:max-lg:mb-5"
+              >
                 ADD TO CART
               </button>
               <button className="border border-[#13761d] text-[#13761d] hover:bg-[#13761d] hover:text-white duration-300 font-semibold py-3 px-4 rounded">
@@ -120,20 +197,21 @@ const Product = () => {
               <span className="font-bold">SKU:</span> N/A
             </p>
             <p>
-              <span className="font-bold">Category:</span> বাদাম / Nut
+              <span className="font-bold">Category:</span> {productCategory}
             </p>
             <p className="my-1.5">
-              <span className="font-bold">Tags:</span> badam, Nut, Peanut
+              <span className="font-bold">Tags:</span>{" "}
+              {productTages?.map((tag) => " " + tag + ",")}
             </p>
             <p className="flex gap-x-3 items-center">
               <span className="font-bold">Share:</span>
-              <a href="#" title="Facebook">
+              <a href="https://www.facebook.com/" title="Facebook">
                 <FaFacebookF className="hover:text-[#13761d] duration-300 cursor-pointer" />
               </a>
-              <a href="#" title="Twitter">
+              <a href="https://twitter.com/" title="Twitter">
                 <FaXTwitter className="hover:text-[#13761d] duration-300 cursor-pointer" />
               </a>
-              <a href="#" title="Linkedin">
+              <a href="https://www.linkedin.com/" title="Linkedin">
                 <FaLinkedinIn className="hover:text-[#13761d] duration-300 cursor-pointer" />
               </a>
             </p>
@@ -141,16 +219,17 @@ const Product = () => {
         </div>
       </div>
       <div className="md:flex gap-4 mt-4 hidden">
-        <img
-          src={achar_combo}
-          alt=""
-          className="w-28 rounded-sm cursor-pointer"
-        />
-        <img
-          src={alu_bukhara}
-          alt=""
-          className="w-28 rounded-sm cursor-pointer"
-        />
+        {singleProductImages.map((img, index) => {
+          return (
+            <img
+              key={index}
+              src={img}
+              alt={productName}
+              className="w-28 rounded-sm cursor-pointer"
+              onClick={() => setImgIndex(index)}
+            />
+          );
+        })}
       </div>
       <div className="flex justify-center md:gap-x-16 gap-x-4 items-center mt-20 mb-12">
         <p
@@ -231,6 +310,16 @@ const Product = () => {
           </div>
         </div>
       )}
+      <hr className="my-8" />
+      <div className="mx-5 md:mx-0">
+        <h1 className="text-xl font-semibold">Feature Product</h1>
+        <section className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 place-items-center items-stretch gap-x-3 gap-y-6 sm:gap-y-6 md:gap-y-10 xl:gap-y-16 my-8">
+          <FeaturesProducts />
+          <FeaturesProducts />
+          <FeaturesProducts />
+          <FeaturesProducts />
+        </section>
+      </div>
     </div>
   );
 };

@@ -166,7 +166,7 @@ const Header = () => {
           </div>
         )}
         {/* Mobile menu */}
-        <nav className="flex justify-between items-center mx-4 my-2 md:hidden">
+        <nav className="flex justify-between items-center mx-4 my-2 sm:hidden md:hidden">
           {toogleMenuIcon && (
             <span
               onClick={openToggleMenuIcon}
@@ -230,7 +230,7 @@ const Header = () => {
         )}
       </header>
       {isOpenSearch && (
-        <div className="absolute top-16 w-full">
+        <div className="sm:hidden fixed top-16 left-[50%] transform -translate-x-1/2 z-40 w-3/4">
           <input
             type="search"
             name="mobile-search"

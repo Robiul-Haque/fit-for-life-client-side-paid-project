@@ -49,7 +49,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#373839]">
       <div className="lg:px-60 md:px-40 pt-10 px-6">
-        <div className="flex justify-center sm:gap-x-20 sm:gap-y-10 items-start xl:flex-row flex-col">
+        <div className="flex justify-center sm:gap-x-20 sm:gap-y-1 md:gap-y-10 items-start xl:flex-row flex-col">
           <div>
             <img src={siteLogo} alt="Site Logo" className="h-20 mb-5" />
             <div className="flex items-center gap-x-2 text-[#c5c5c5]">
@@ -82,7 +82,7 @@ const Footer = () => {
                 info@fitforlifebd.com
               </p>
             </div>
-            <div className="flex gap-x-3 mt-6">
+            <div className="flex gap-x-3 mt-6 mb-6 md:mb-0">
               <i className="text-lg text-white hover:text-[#c5c5c5] transition-all cursor-pointer">
                 <FaFacebookF />
               </i>
@@ -176,7 +176,7 @@ const Footer = () => {
             </ul>
           </div>
           {/* Mobile Footer Menu */}
-          <div className="xl:hidden block w-full">
+          <div className="xl:hidden block w-full mb-4 md:mb-0">
             {!resentPost ? (
               <div
                 onClick={resentPostOpen}
@@ -227,7 +227,7 @@ const Footer = () => {
               </>
             )}
           </div>
-          <div className="xl:hidden block w-full">
+          <div className="xl:hidden block w-full my-4 md:my-0">
             {!usefullLinks ? (
               <div
                 onClick={usefulLinksOpen}
@@ -271,7 +271,7 @@ const Footer = () => {
               </>
             )}
           </div>
-          <div className="xl:hidden block w-full">
+          <div className="xl:hidden block w-full my-4 md:my-0">
             {!categories ? (
               <div
                 onClick={categoriesOpen}

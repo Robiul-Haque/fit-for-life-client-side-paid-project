@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineGridView } from "react-icons/md";
 import { TfiLayoutGrid3 } from "react-icons/tfi";
 import { TfiLayoutGrid4 } from "react-icons/tfi";
-import badam from "../assets/Badam.jpg";
-import acher_combo from "../assets/achar-combo.webp";
 import ReactSlider from "react-slider";
 import { MdOutlineHorizontalRule } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -15,13 +13,27 @@ import alu_bukhara from "../assets/Alu-bukhara.webp";
 import amsotto from "../assets/Amsotto.webp";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
+import ShopPageProduct from "../component/ShopPageProduct";
 
 const Shop = () => {
   const MIN = 150;
   const MAX = 8400;
   const [values, setValues] = useState([MIN, MAX]);
+  const [cardView, setCardView] = useState(3);
   const [toogleItem, setToogleItem] = useState(false);
   const [toogleSideMenu, setToogleSideMenu] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://fit-for-life-paid-project.vercel.app/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      });
+  }, []);
 
   const handleOpenItem = () => {
     setToogleItem(true);
@@ -40,8 +52,8 @@ const Shop = () => {
   };
 
   return (
-    <section className="flex md:justify-center gap-x-12 md:w-3/4 md:mx-auto mx-1 md:mt-36 mt-16 md:mb-16 mb-14">
-      <div className="md:block w-[30%] hidden">
+    <section className="flex md:justify-center gap-x-12 xl:w-3/4 xl:mx-auto mx-1 md:mt-36 mt-16 md:mb-16 mb-14">
+      <div className="xl:block xl:w-[22%] hidden">
         <h2 className="text-2xl font-semibold text-[#333333]">
           FILTER BY PRICE
         </h2>
@@ -217,11 +229,11 @@ const Shop = () => {
           </div>
         </div>
       </div>
-      <div className="md:w-[70%] w-full">
-        <div className="md:hidden block">
+      <div className="w-[98%] xl:w-[78%]">
+        <div className="xl:hidden block">
           <div
             onClick={handleCloseSideMenu}
-            className="flex justify-between items-center mt-4"
+            className="flex justify-between items-center mt-4 md:text-xl"
           >
             <p className="cursor-pointer">
               Home / <span className="text-[#333333] font-bold">Shop</span>
@@ -229,7 +241,7 @@ const Shop = () => {
             <p>Showing 1–12 of 46 results</p>
           </div>
           <hr className="my-5" />
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center md:text-xl">
             <span
               onClick={handleOpenSideMenu}
               className="flex gap-x-2 items-center"
@@ -240,7 +252,7 @@ const Shop = () => {
               <p className="font-bold">Show sidebar</p>
             </span>
             {toogleSideMenu ? (
-              <div className="block absolute -top-2 left-0 z-30 w-4/5 h-[100%] bg-slate-100 md:hidden">
+              <div className="block absolute -top-2 md:-top-8 left-0 z-30 w-5/6 md:w-3/5 h-[100%] bg-slate-100 xl:hidden">
                 <div className="flex justify-between items-center cursor-pointer mt-4 mx-4">
                   <h2 className="font-semibold text-xl text-[#333333]">
                     SIDEBAR
@@ -452,7 +464,7 @@ const Shop = () => {
             <select
               onClick={handleCloseSideMenu}
               name="sorting"
-              className="border-b-2 focus:border-b-green-700 focus:outline-none cursor-pointer font-semibold text-[#333333] w-32 position-fixed bottom-0"
+              className="border-b-2 focus:border-b-green-700 focus:outline-none cursor-pointer font-semibold text-[#333333] w-32 md:w-52 position-fixed bottom-0"
             >
               <option value="defult sorting">Defult sorting</option>
               <option value="Sort by popularity">Sort by popularity</option>
@@ -471,7 +483,7 @@ const Shop = () => {
         </div>
         <div
           onClick={handleCloseSideMenu}
-          className="md:flex justify-between text-[#555555] hidden"
+          className="xl:flex justify-between text-[#555555] hidden"
         >
           <p className="cursor-pointer">
             Home / <span className="text-[#333333] font-bold">Shop</span>
@@ -481,13 +493,34 @@ const Shop = () => {
             / 24
           </p>
           <div className="flex gap-x-3 items-center cursor-pointer">
-            <i className="text-3xl text-[#555555] hover:text-black">
+            <i
+              onClick={() => setCardView(2)}
+              className={
+                cardView === 2
+                  ? "text-3xl text-black"
+                  : "text-3xl text-[#555555] hover:text-black"
+              }
+            >
               <MdOutlineGridView />
             </i>
-            <i className="text-2xl text-black">
+            <i
+              onClick={() => setCardView(3)}
+              className={
+                cardView === 3
+                  ? "text-2xl text-black"
+                  : "text-2xl text-[#555555] hover:text-black"
+              }
+            >
               <TfiLayoutGrid3 />
             </i>
-            <i className="text-2xl text-[#555555] hover:text-black">
+            <i
+              onClick={() => setCardView(4)}
+              className={
+                cardView === 4
+                  ? "text-[26px] text-black"
+                  : "text-[26px] text-[#555555] hover:text-black"
+              }
+            >
               <TfiLayoutGrid4 />
             </i>
           </div>
@@ -510,230 +543,18 @@ const Shop = () => {
           </select>
         </div>
         {/* all products */}
-        <div
-          onClick={handleCloseSideMenu}
-          className="grid md:grid-cols-3 grid-cols-2 md:gap-12 gap-6 mt-8"
-        >
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -7%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                সরিয়ার তেল, মেশিনের ঘানি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                খেজুরের গুড়
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                280.00<span className="text-md font-extrabold">৳</span> – 560.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
+        {loading ? (
+          <div className="text-center my-20">
+            <span class="loader"></span>
           </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={acher_combo}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -9%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                তেল, নারকেল তেল
-              </p>
-              <h2>
-                <del className="text-[#7c7c7c] mr-2">
-                  1,000.00<span className="text-md font-extrabold">৳</span>
-                </del>
-                <span className="text-[#13761d] font-bold">
-                  1,900.00<span className="text-md font-extrabold">৳</span>
-                </span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="গ্রামের কুমড়া বড়ি"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -17%
-            </p>
-            <p className="flex justify-center items-center bg-white text-[#333333] font-semibold md:w-12 md:h-12 p-3 w-10 h-10 text-xs rounded-full absolute top-14 left-1">
-              SOLD OUT
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                গ্রামের কুমড়া বড়ি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                Spice
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                250.00<span className="text-md font-extrabold">৳</span> – 500.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -7%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                সরিয়ার তেল, মেশিনের ঘানি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                খেজুরের গুড়
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                280.00<span className="text-md font-extrabold">৳</span> – 560.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={acher_combo}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -9%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                তেল, নারকেল তেল
-              </p>
-              <h2>
-                <del className="text-[#7c7c7c] mr-2">
-                  1,000.00<span className="text-md font-extrabold">৳</span>
-                </del>
-                <span className="text-[#13761d] font-bold">
-                  1,900.00<span className="text-md font-extrabold">৳</span>
-                </span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="গ্রামের কুমড়া বড়ি"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -17%
-            </p>
-            <p className="flex justify-center items-center bg-white text-[#333333] font-semibold md:w-12 md:h-12 p-3 w-10 h-10 text-xs rounded-full absolute top-14 left-1">
-              SOLD OUT
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                গ্রামের কুমড়া বড়ি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                Spice
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                250.00<span className="text-md font-extrabold">৳</span> – 500.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -7%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                সরিয়ার তেল, মেশিনের ঘানি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                খেজুরের গুড়
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                280.00<span className="text-md font-extrabold">৳</span> – 560.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={acher_combo}
-              alt="কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -9%
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                কাঠের ঘানি ভাঙ্গা সরিষার তেল (৫ লিটার)
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                তেল, নারকেল তেল
-              </p>
-              <h2>
-                <del className="text-[#7c7c7c] mr-2">
-                  1,000.00<span className="text-md font-extrabold">৳</span>
-                </del>
-                <span className="text-[#13761d] font-bold">
-                  1,900.00<span className="text-md font-extrabold">৳</span>
-                </span>
-              </h2>
-            </div>
-          </div>
-          <div className="md:w-72 w-40 border rounded relative overflow-hidden">
-            <img
-              src={badam}
-              alt="গ্রামের কুমড়া বড়ি"
-              className="rounded-t cursor-pointer hover:scale-105 duration-1000"
-            />
-            <p className="flex justify-center items-center bg-[#e02626] text-white font-semibold md:w-12 md:h-12 w-10 h-10 md:text-md text-sm rounded-full absolute top-1 left-1">
-              -17%
-            </p>
-            <p className="flex justify-center items-center bg-white text-[#333333] font-semibold md:w-12 md:h-12 p-3 w-10 h-10 text-xs rounded-full absolute top-14 left-1">
-              SOLD OUT
-            </p>
-            <div className="md:m-5 mx-1 my-5 text-center">
-              <h1 className="text-lg font-bold text-[#333333] hover:text-[#7c7c7c] duration-300 cursor-pointer">
-                গ্রামের কুমড়া বড়ি
-              </h1>
-              <p className="text-[#b6b6b6] my-2 hover:text-[#6e6e6e] cursor-pointer duration-300">
-                Spice
-              </p>
-              <h2 className="text-[#13761d] font-bold">
-                250.00<span className="text-md font-extrabold">৳</span> – 500.00
-                <span className="text-md font-extrabold">৳</span>
-              </h2>
-            </div>
-          </div>
-        </div>
+        ) : (
+          <ShopPageProduct
+            handleCloseSideMenu={handleCloseSideMenu}
+            loading={loading}
+            cardView={cardView}
+            products={products}
+          />
+        )}
         {/* pagination */}
         <div className="flex justify-center items-center gap-x-4 mt-10">
           <span className="bg-[#13761d] text-white font-semibold w-7 h-7 text-center rounded cursor-pointer">

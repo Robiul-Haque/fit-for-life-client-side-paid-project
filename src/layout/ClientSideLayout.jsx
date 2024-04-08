@@ -35,15 +35,16 @@ const ClientSideLayout = () => {
         smooth
         color="#373839"
         width="38"
-        className="md:block hidden"
+        className="xl:block hidden"
       />
       {/* Mobile scroll to top btn */}
       <ScrollToTop
         smooth
         color="#373839"
-        width="38"
+        width="36"
+        height="20"
         style={{ postion: "absolute", bottom: "68px", right: "14px" }}
-        className="md:hidden block"
+        className="xl:hidden block"
       />
     </div>
   );
