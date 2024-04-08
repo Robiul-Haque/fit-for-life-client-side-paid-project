@@ -3,7 +3,9 @@ import ClientSideLayout from "../layout/ClientSideLayout";
 import Home from "../page/Home";
 import Shop from "../page/Shop";
 import Product from "../page/Product";
-import { AboutUs } from "../page/AboutUs";
+import AboutUs from "../page/AboutUs";
+import Blog from "../page/Blog";
+import ContactUs from "../page/ContactUs";
 
 const route = createBrowserRouter([
   {
@@ -32,11 +34,11 @@ const route = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <h1>Blog page</h1>,
+        element: <Blog />,
       },
       {
         path: "/contact-us",
-        element: <h1>Contact us Page</h1>,
+        element: <ContactUs />,
       },
     ],
   },
