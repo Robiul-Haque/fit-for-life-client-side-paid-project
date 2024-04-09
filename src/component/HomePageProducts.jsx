@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HomePageProducts = ({ products }) => {
   return (
-    <section className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 place-items-center items-stretch gap-x-3 gap-y-6 sm:gap-y-6 md:gap-y-10 xl:gap-y-16 my-16">
+    <section className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 place-items-center items-stretch gap-x-3 gap-y-6 sm:gap-y-6 md:gap-y-10 xl:gap-y-16 my-16 mx-3 max-sm:mx-3">
       {products.map((product) => {
         return (
           <div
