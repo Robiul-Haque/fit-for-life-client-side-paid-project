@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactImageMagnify from "react-image-magnify";
 import { FiPlus } from "react-icons/fi";
 import { IoRemoveOutline } from "react-icons/io5";
@@ -27,6 +27,10 @@ const Product = () => {
   const [cartCount, setCartCount] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
   const [imgIndex, setImgIndex] = useState([]);
+  
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleAddToCart = (name, currentPrice, discount, available) => {
     const getProduct = JSON.parse(localStorage.getItem("fit-for-life") || "[]");
@@ -234,21 +238,19 @@ const Product = () => {
       <div className="flex justify-center md:gap-x-16 gap-x-4 items-center mt-20 mb-12">
         <p
           onClick={handleToggleDescriptionTab}
-          className={`${
-            isOpen
+          className={`${isOpen
               ? "font-semibold cursor-pointer text-[#13761d] p-2 border-b-2 border-b-[#13761d]"
               : "font-semibold cursor-pointer hover:text-[#13761d] duration-300 p-2"
-          }`}
+            }`}
         >
           DESCRIPTION
         </p>
         <p
           onClick={handleToggleShipingTab}
-          className={`${
-            isOpen
+          className={`${isOpen
               ? "font-semibold cursor-pointer hover:text-[#13761d] duration-300 p-2"
               : "font-semibold cursor-pointer text-[#13761d] p-2 border-b-2 border-b-[#13761d]"
-          }`}
+            }`}
         >
           SHIPPING & DELIVERY
         </p>
